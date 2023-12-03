@@ -1,8 +1,8 @@
 # I'm not even gonna try to make the code pretty
 
 ## Days
-- [x] Day 1
-- [x] Day 2
+- [x] [Day 1](https://github.com/KamilZielinski/aoc2023/blob/master/src/main/java/org/example/day1/Main.java)
+- [x] [Day 2](https://github.com/KamilZielinski/aoc2023/blob/master/src/main/java/org/example/day2/Main.java)
 - [ ] Day 3
 - [ ] Day 4
 - [ ] Day 5
