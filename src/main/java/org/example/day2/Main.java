@@ -14,14 +14,11 @@ import java.util.Map.Entry;
 
 public class Main {
 
-  static Map<String, Integer> colorsAmount = new HashMap<>();
+  private final static Map<String, Integer> colorsAmount = new HashMap<>();
 
   record Game(Integer id, List<Take> takes) {
-
     record Take(List<Color> colors) {
-
       record Color(String color, Integer amount) {
-
       }
     }
   }
@@ -47,20 +44,20 @@ public class Main {
       List<Game.Take> takes = new ArrayList<>();
       for (String take : takesList) {
         String[] colors = take.split(",");
-        List<Game.Take.Color> aha = new ArrayList<>();
+        List<Game.Take.Color> takeColors = new ArrayList<>();
         for (String color : colors) {
           Integer takeAmount = Integer.valueOf(color.strip().split(" ")[0]);
           String takeColor = color.strip().split(" ")[1];
-          aha.add(new Game.Take.Color(takeColor, takeAmount));
+          takeColors.add(new Game.Take.Color(takeColor, takeAmount));
         }
-        takes.add(new Game.Take(aha));
+        takes.add(new Game.Take(takeColors));
       }
       playedGames.add(new Game(gameId, takes));
     }
     List<Game> sortedGames = playedGames.stream().sorted(Comparator.comparing(o -> o.id)).toList();
 
     int sumPartOne = sortedGames.stream()
-        .filter(game -> !game.takes.stream().anyMatch(Main::notMatchingRules))
+        .filter(game -> game.takes.stream().noneMatch(Main::notMatchingRules))
         .map(entry -> entry.id)
         .mapToInt(Integer::intValue)
         .sum();
