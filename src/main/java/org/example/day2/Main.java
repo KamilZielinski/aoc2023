@@ -71,7 +71,6 @@ public class Main {
         .sum();
     System.out.println("part one: " + sumPartOne);
     System.out.println("part two: " + sumPartTwo);
-
   }
 
   private static Integer multipliedMinimumAmountsOfCubes(List<Game.Take> takes) {
